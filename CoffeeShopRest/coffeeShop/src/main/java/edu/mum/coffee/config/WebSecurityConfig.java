@@ -14,17 +14,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests()
-                .antMatchers("/", "/home", "/index").permitAll()
-                .anyRequest().authenticated()
-                .and()
+            .authorizeRequests().anyRequest().authenticated().and().httpBasic();
+                //.anyRequest().authenticated()
+                /*.and()
             .formLogin()
             	.permitAll()
             	.and()
             .logout()
             	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
             	.logoutSuccessUrl("/")
-                .permitAll();
+                .permitAll();*/
+
+		//Q1 - What does this do
+        http.csrf().disable();
     }
 
 	@Autowired

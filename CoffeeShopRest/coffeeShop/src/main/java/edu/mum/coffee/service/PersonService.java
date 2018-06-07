@@ -28,8 +28,13 @@ public class PersonService {
 		return personRepository.findOne(id);
 	}
 
-	public void removePerson(Person person) {
+	public void removePerson(Person person) throws Exception {
 		personRepository.delete(person);
 	}
+
+	public List<Person> getAllPerson(){
+		return personRepository.findAll();
+	}
+
 
 }
