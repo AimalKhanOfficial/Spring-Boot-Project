@@ -25,7 +25,6 @@ public class Order {
 	private int id;
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
-
 	@OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Orderline> orderLines = new ArrayList<Orderline>();
 	@OneToOne
