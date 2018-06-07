@@ -1,5 +1,8 @@
 package edu.mum.coffee.Utility;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class HttpCustomResponse {
     private String responseDescription;
     private int responseCode;

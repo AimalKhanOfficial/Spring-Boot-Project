@@ -9,16 +9,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/Person/")
+@RequestMapping("/api/person/")
 public class PersonController {
 
     @Autowired
     PersonService personService;
 
-    @PostMapping("Create")
+    @Autowired
+    HttpCustomResponse customResponse;
+
+    @PostMapping("create")
     public HttpCustomResponse Create(@RequestBody Person person) {
         Person personRes = personService.savePerson(person);
-        HttpCustomResponse customResponse = new HttpCustomResponse();
         if (personRes != null) {
             customResponse.setResponseCode(200);
             customResponse.setResponseDescription("Success, Person was added with ID: " + personRes.getId());
@@ -29,52 +31,21 @@ public class PersonController {
         return customResponse;
     }
 
-    @PutMapping("Update")
+    @PutMapping("update")
     public HttpCustomResponse Update(@RequestBody Person person) {
-        HttpCustomResponse customResponse = new HttpCustomResponse();
-        try {
-
-            //Updation Logic
-            /*Person personRes = personService.findById(person.getId());
-            personRes.setFirstName(person.getFirstName());
-            personRes.setLastName(person.getLastName());
-            personRes.setEmail(person.getEmail());
-            personRes.setAddress(person.getAddress());
-            personRes.setPhone(person.getPhone());
-            personRes.setEnable(person.isEnable());
-            personService.savePerson(personRes);*/
-
-            //OR we could just do - since the id is already being provided - Result: Works Perfectly!
-            personService.savePerson(person);
-
-
+        Person personRes = personService.savePerson(person);
+        if (personRes != null) {
             customResponse.setResponseCode(200);
             customResponse.setResponseDescription("Success, Person was Updated with ID: " + person.getId());
-        } catch (Exception ex) {
+        } else {
             customResponse.setResponseCode(400);
-            customResponse.setResponseDescription("Something went wrong, try again later.");
+            customResponse.setResponseDescription("The request did not execute as expected.");
         }
         return customResponse;
     }
 
-    @GetMapping("List")
+    @GetMapping("list")
     public List<Person> List() {
         return personService.getAllPerson();
     }
-
-    /*@DeleteMapping("Delete")
-    public HttpCustomResponse Delete(@RequestBody Person person) {
-        HttpCustomResponse customResponse = new HttpCustomResponse();
-        try {
-            personService.removePerson(person);
-            customResponse.setResponseCode(200);
-            customResponse.setResponseDescription("Success, Person was deleted with ID: " + person.getId());
-        } catch (Exception ex) {
-            customResponse.setResponseCode(400);
-            customResponse.setResponseDescription("Something went wrong, try again later.");
-        }
-        return customResponse;
-    }*/
-
-
 }

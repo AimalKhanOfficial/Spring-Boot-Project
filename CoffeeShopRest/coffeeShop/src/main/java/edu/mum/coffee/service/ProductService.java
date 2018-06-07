@@ -17,11 +17,11 @@ public class ProductService   {
 	@Autowired
 	private ProductRepository productRepository;
 		
-	public Product save(Product product) {
+	public Product save(Product product){
 		return productRepository.save(product);
 	}
 
-	public void delete(Product product) {
+	public void delete(Product product) throws Exception {
 		productRepository.delete(product);
 	}
 
