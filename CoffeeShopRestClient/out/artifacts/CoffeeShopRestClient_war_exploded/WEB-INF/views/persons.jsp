@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Aimal
@@ -9,8 +10,52 @@
 <html>
 <head>
     <title>Persons</title>
+    <link href="<c:url value="/resources/css/bootstrap.min.css" />" rel="stylesheet">
+    <link href="<c:url value="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" />"
+          rel="stylesheet">
+    <script src="<c:url value="/resources/js/jquery.min.js" />"></script>
+    <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
+
+<div class="row" style="margin-top: 5%">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <img style="float: right" height="80px" width="80px" src="/resources/images/new_4.png">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Address</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Enable</th>
+                <th scope="col">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach items="${persons}" var="person">
+                <tr>
+                    <td>${person.id}</td>
+                    <td>${person.firstName}</td>
+                    <td>${person.lastName}</td>
+                    <td>${person.email}</td>
+                    <td>${person.address.city}, ${person.address.country}, ${person.address.state}, ${person.address.zipcode}</td>
+                    <td>${person.phone}</td>
+                    <td>${person.enable}</td>
+                    <td>
+                        <a href="#"><img height="23px" width="23px"  src="/resources/images/Edit-validated-icon.png"></a>
+                        <a href="#"><img height="23px" width="23px"  src="/resources/images/Delete_Icon.png"></a>
+                    </td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
 
 </body>
 </html>
