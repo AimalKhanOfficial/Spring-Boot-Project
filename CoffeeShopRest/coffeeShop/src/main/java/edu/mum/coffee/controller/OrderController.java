@@ -25,29 +25,15 @@ public class OrderController {
     HttpCustomResponse customResponse;
 
     @PostMapping("create")
-    public HttpCustomResponse Create(@RequestBody Order order) {
+    public Order Create(@RequestBody Order order) {
         Order orderRes = orderService.save(order);
-        if (orderRes != null) {
-            customResponse.setResponseCode(200);
-            customResponse.setResponseDescription("Success, Order was added with ID: " + orderRes.getId());
-        } else {
-            customResponse.setResponseCode(400);
-            customResponse.setResponseDescription("The request did not execute as expected.");
-        }
-        return customResponse;
+        return orderRes;
     }
 
     @PostMapping("createOrderline")
-    public HttpCustomResponse CreateOrderLine(@RequestBody Orderline orderline) {
+    public Orderline CreateOrderLine(@RequestBody Orderline orderline) {
         Orderline orderLineRes = orderlineService.save(orderline);
-        if (orderLineRes != null) {
-            customResponse.setResponseCode(200);
-            customResponse.setResponseDescription("Success, OrderLine was added with Order ID: " + orderLineRes.getOrder().getId());
-        } else {
-            customResponse.setResponseCode(400);
-            customResponse.setResponseDescription("The request did not execute as expected.");
-        }
-        return customResponse;
+        return orderLineRes;
     }
 
     @GetMapping("list")

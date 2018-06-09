@@ -48,4 +48,9 @@ public class PersonController {
     public List<Person> List() {
         return personService.getAllPerson();
     }
+
+    @GetMapping("getbyid/{personId}")
+    public Person getById(@PathVariable Long personId) {
+        return personService.findById(personId);
+    }
 }

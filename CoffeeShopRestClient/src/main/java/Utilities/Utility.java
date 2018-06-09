@@ -12,7 +12,7 @@ public class Utility {
         String notEncoded = "super" + ":" + "pw";
         String encodedAuth = "Basic " + Base64.getEncoder().encodeToString(notEncoded.getBytes());
         HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.add("Accept", MediaType.APPLICATION_JSON_VALUE);
         headers.add("Authorization", encodedAuth);
         return headers;
     }
