@@ -46,8 +46,7 @@
                     <td>${person.phone}</td>
                     <td>${person.enable}</td>
                     <td>
-                        <a href="#"><img height="23px" width="23px"  src="/resources/images/Edit-validated-icon.png"></a>
-                        <a href="#"><img height="23px" width="23px"  src="/resources/images/Delete_Icon.png"></a>
+                        <a href="/editPerson/${person.id}"><img height="23px" width="23px"  src="/resources/images/Edit-validated-icon.png"></a>
                     </td>
                 </tr>
             </c:forEach>

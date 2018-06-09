@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -20,6 +21,18 @@ public class PersonController {
     @GetMapping("/createPerson")
     public String createPerson(Model model) {
         return "createPerson";
+    }
+
+    @GetMapping("/editPerson/{personId}")
+    public String editPerson(@PathVariable("personId") String personId, Model model) {
+        model.addAttribute("person", new PersonsDao().getPersonById(personId));
+        return "editPerson";
+    }
+
+    @PostMapping("/editPerson")
+    public String editPerson(@ModelAttribute("person") Person person) {
+        new PersonsDao().updatePerson(person);
+        return "redirect:/persons";
     }
 
     @PostMapping("/createPerson")

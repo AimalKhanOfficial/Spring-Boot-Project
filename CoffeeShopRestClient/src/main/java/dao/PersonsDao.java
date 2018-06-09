@@ -49,6 +49,17 @@ public class PersonsDao {
         }
     }
 
+    public void updatePerson(Person person){
+        String target = baseUrl + "update";
+        RestTemplate restTemplate = new RestTemplate();
+        try {
+            HttpHeaders headers = Utility.createHttpHeaders();
+            ResponseEntity<Person> response = restTemplate.exchange(target, HttpMethod.PUT, new HttpEntity<Person>(person, headers), Person.class);
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+    }
+
     public Person getPersonById(String id){
         Person person = new Person();
         String target = baseUrl + "getbyid/{personId}";
