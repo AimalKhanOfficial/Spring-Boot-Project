@@ -14,8 +14,8 @@ public class Orderline {
 	}
 
 	private int id;
-	private int quantity;
-	private Product product;
+    private int quantity;
+    private Product product;
 
 	private Order order;
 
