@@ -2,6 +2,7 @@ package edu.mum.coffee.service;
 
 import java.util.List;
 
+import edu.mum.coffee.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -46,6 +47,10 @@ public class ProductService   {
 	
 	public List<Product> findByProductType(ProductType productType) {
 		 return productRepository.findByProductType(productType);
+	}
+
+	public Product findById(int id) {
+		return productRepository.findOne(id);
 	}
 	
 }

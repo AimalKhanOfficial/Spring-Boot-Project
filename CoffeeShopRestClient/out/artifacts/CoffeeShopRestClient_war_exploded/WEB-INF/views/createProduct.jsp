@@ -17,16 +17,18 @@
 </head>
 <body>
 <form action="/createProduct" method="post">
-    <div class="row" style="margin-top: 5%;">
+    <div class="row" style="margin-top: 2%;">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <input class="form-control" type="text" name="productName" placeholder="productName"/>
+            <h2>Create Product</h2>
             <br/>
-            <input class="form-control" type="text" name="description" placeholder="description"/>
+            <input class="form-control" type="text" name="productName" placeholder="productName" required/>
             <br/>
-            <input class="form-control" type="number" name="price" placeholder="price"/>
+            <input class="form-control" type="text" name="description" placeholder="description" required/>
             <br/>
-            <select name="productType">
+            <input class="form-control" type="number" name="price" placeholder="price" required/>
+            <br/>
+            <select name="productType" class="form-control" required>
                 <option>
                     BREAKFAST
                 </option>

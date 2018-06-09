@@ -23,6 +23,7 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
         <a href="/create" style="float: right"><img height="80px" width="80px" src="/resources/images/new_4.png"/></a>
+        <h2>List of Orders</h2>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -30,7 +31,6 @@
                 <th scope="col">Order Date</th>
                 <th scope="col">Order Lines</th>
                 <th scope="col">Person</th>
-                <th scope="col">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -40,10 +40,6 @@
                     <td>${order.orderDate}</td>
                     <td>${order.orderLines.size()}</td>
                     <td>${order.person.lastName}, ${order.person.firstName}</td>
-                    <td>
-                        <a href="#"><img height="23px" width="23px"  src="/resources/images/Edit-validated-icon.png"></a>
-                        <a href="#"><img height="23px" width="23px"  src="/resources/images/Delete_Icon.png"></a>
-                    </td>
                 </tr>
             </c:forEach>
             </tbody>

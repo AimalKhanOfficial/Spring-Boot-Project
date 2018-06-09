@@ -17,24 +17,26 @@
 </head>
 <body>
     <form action="/createPerson" method="post">
-        <div class="row" style="margin-top: 5%;">
+        <div class="row" style="margin-top: 2%;">
             <div class="col-sm-3"></div>
             <div class="col-sm-6">
-                <input class="form-control" type="text" name="firstName" placeholder="firstName"/>
+                <h2>Create Person</h2>
                 <br/>
-                <input class="form-control" type="text" name="lastName" placeholder="lastName"/>
+                <input class="form-control" type="text" name="firstName" placeholder="firstName" required/>
                 <br/>
-                <input class="form-control" type="text" name="email" placeholder="email"/>
+                <input class="form-control" type="text" name="lastName" placeholder="lastName" required/>
                 <br/>
-                <input class="form-control" type="text" name="address.city" placeholder="city"/>
+                <input class="form-control" type="text" name="email" placeholder="email" required/>
                 <br/>
-                <input class="form-control" type="text" name="address.country" placeholder="country"/>
+                <input class="form-control" type="text" name="address.city" placeholder="city" required/>
                 <br/>
-                <input class="form-control" type="text" name="address.state" placeholder="state"/>
+                <input class="form-control" type="text" name="address.country" placeholder="country" required/>
                 <br/>
-                <input class="form-control" type="text" name="address.zipcode" placeholder="zipcode"/>
+                <input class="form-control" type="text" name="address.state" placeholder="state" required/>
                 <br/>
-                <input class="form-control" type="text" name="phone" placeholder="phone"/>
+                <input class="form-control" type="text" name="address.zipcode" placeholder="zipcode" required/>
+                <br/>
+                <input class="form-control" type="number" name="phone" placeholder="phone" required/>
                 <br/>
                 <input type="radio" name="enable" value="true"/> Yes
                 <input type="radio" name="enable" value="false"/> No

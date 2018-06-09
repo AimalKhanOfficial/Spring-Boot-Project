@@ -22,6 +22,7 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
         <a href="/createProduct" style="float: right"><img height="80px" width="80px" src="/resources/images/new_4.png"/></a>
+        <h2>List of Product</h2>
         <table class="table table-hover">
             <thead>
             <tr>
@@ -29,6 +30,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
+                <th scope="col">Type</th>
                 <th scope="col">Actions</th>
             </tr>
             </thead>
@@ -39,9 +41,10 @@
                     <td>${prod.productName}</td>
                     <td>${prod.description}</td>
                     <td>${prod.price}</td>
+                    <td>${prod.productType}</td>
                     <td>
-                        <a href="#"><img height="23px" width="23px"  src="/resources/images/Edit-validated-icon.png"></a>
-                        <a href="#"><img height="23px" width="23px"  src="/resources/images/Delete_Icon.png"></a>
+                        <a href="/editProduct/${prod.id}"><img height="23px" width="23px"  src="/resources/images/Edit-validated-icon.png"></a>
+                        <a href="/deleteProduct/${prod.id}"><img height="23px" width="23px"  src="/resources/images/Delete_Icon.png"></a>
                     </td>
                 </tr>
             </c:forEach>

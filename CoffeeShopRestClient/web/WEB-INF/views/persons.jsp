@@ -22,6 +22,7 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
         <a href="/createPerson" style="float: right"><img height="80px" width="80px" src="/resources/images/new_4.png"/></a>
+        <h2>List of Persons</h2>
         <table class="table table-hover">
             <thead>
             <tr>

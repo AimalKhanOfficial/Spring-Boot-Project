@@ -3,39 +3,39 @@
   Created by IntelliJ IDEA.
   User: Aimal
   Date: 6/8/2018
-  Time: 11:28 PM
+  Time: 11:41 PM
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
     <link href="<c:url value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />"
           rel="stylesheet">
     <script src="<c:url value="/resources/js/jquery.min.js" />"></script>
     <script src="<c:url value="/resources/js/bootstrap.min.js" />"></script>
 </head>
 <body>
-<form action="/createProduct" method="post">
+<form action="/editProduct" method="post">
     <div class="row" style="margin-top: 2%;">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <h2>Create Product</h2>
+            <h2>Edit Product</h2>
             <br/>
-            <input class="form-control" type="text" name="productName" placeholder="productName" required/>
+            <input type="hidden" name="id" value="${product.id}">
+            <input class="form-control" type="text" name="productName" value="${product.productName}" placeholder="productName" required/>
             <br/>
-            <input class="form-control" type="text" name="description" placeholder="description" required/>
+            <input class="form-control" type="text" name="description" value="${product.description}" placeholder="description" required/>
             <br/>
-            <input class="form-control" type="number" name="price" placeholder="price" required/>
+            <input class="form-control" type="number" name="price" value="${product.price}" placeholder="price" required/>
             <br/>
-            <select name="productType" class="form-control" required>
-                <option>
+            <select name="productType">
+                <option ${product.productType == "BREAKFAST" ? 'selected' : ''}>
                     BREAKFAST
                 </option>
-                <option>
+                <option ${product.productType == "LUNCH" ? 'selected' : ''}>
                     LUNCH
                 </option>
-                <option>
+                <option ${product.productType == "DINNER" ? 'selected' : ''}>
                     DINNER
                 </option>
             </select>

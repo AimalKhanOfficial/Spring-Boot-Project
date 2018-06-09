@@ -41,11 +41,12 @@
     <div class="col-sm-7">
         <form action="/createOrder" method="post">
             <br/><br/>
+            <h2>Create Order</h2>
             <div class="form-group">
                 <h3>DateTime:</h3>
                 <br/>
                 <div class='input-group date' id='datetimepicker1'>
-                    <input name="txtDT" type='text' class="form-control"/>
+                    <input name="txtDT" type='text' class="form-control" required/>
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -82,7 +83,7 @@
                     Person
                 </h3>
                 <br/>
-                <select name="ddlPerson" class="form-control">
+                <select name="ddlPerson" class="form-control"  required>
                    <c:forEach items="${persons}" var="person">
                        <option value="${person.id}">${person.lastName}, ${person.firstName}</option>
                    </c:forEach>

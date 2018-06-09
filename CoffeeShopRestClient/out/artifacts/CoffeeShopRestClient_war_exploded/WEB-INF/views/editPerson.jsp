@@ -17,25 +17,27 @@
 </head>
 <body>
 <form action="/editPerson" method="post">
-    <div class="row" style="margin-top: 5%;">
+    <div class="row" style="margin-top: 2%;">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
+            <h2>Update Person</h2>
+            <br/>
             <input type="hidden" name="id" value="${person.id}">
-            <input class="form-control" type="text" name="firstName" value="${person.firstName}" placeholder="firstName"/>
+            <input class="form-control" type="text" name="firstName" value="${person.firstName}" placeholder="firstName" required/>
             <br/>
-            <input class="form-control" type="text" name="lastName" value="${person.lastName}" placeholder="lastName"/>
+            <input class="form-control" type="text" name="lastName" value="${person.lastName}" placeholder="lastName" required/>
             <br/>
-            <input class="form-control" type="text" name="email" value="${person.email}" placeholder="email"/>
+            <input class="form-control" type="text" name="email" value="${person.email}" placeholder="email" required/>
             <br/>
-            <input class="form-control" type="text" name="address.city" value="${person.address.city}" placeholder="city"/>
+            <input class="form-control" type="text" name="address.city" value="${person.address.city}" placeholder="city" required/>
             <br/>
-            <input class="form-control" type="text" name="address.country" value="${person.address.country}" placeholder="country"/>
+            <input class="form-control" type="text" name="address.country" value="${person.address.country}" placeholder="country" required/>
             <br/>
-            <input class="form-control" type="text" name="address.state" value="${person.address.state}" placeholder="state"/>
+            <input class="form-control" type="text" name="address.state" value="${person.address.state}" placeholder="state" required/>
             <br/>
-            <input class="form-control" type="text" name="address.zipcode" value="${person.address.zipcode}" placeholder="zipcode"/>
+            <input class="form-control" type="text" name="address.zipcode" value="${person.address.zipcode}" placeholder="zipcode" required/>
             <br/>
-            <input class="form-control" type="text" name="phone" value="${person.phone}" placeholder="phone"/>
+            <input class="form-control" type="number" name="phone" value="${person.phone}" placeholder="phone" required/>
             <br/>
             <input type="radio" name="enable" value="true" ${person.enable ? 'checked' : ''}/> Yes
             <input type="radio" name="enable" value="false" ${!person.enable ? 'checked' : ''}/> No

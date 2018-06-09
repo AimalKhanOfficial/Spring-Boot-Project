@@ -44,4 +44,41 @@ public class ProductsDao {
             System.out.println("Exception: " + ex.getMessage());
         }
     }
+
+    public void updateProduct(Product product){
+        String target = baseUrl + "update";
+        RestTemplate restTemplate = new RestTemplate();
+        try {
+            HttpHeaders headers = Utility.createHttpHeaders();
+            ResponseEntity<Product> response = restTemplate.exchange(target, HttpMethod.PUT, new HttpEntity<Product>(product, headers), Product.class);
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+    }
+
+    public void deleteProduct(Product product){
+        String target = baseUrl + "delete";
+        RestTemplate restTemplate = new RestTemplate();
+        try {
+            HttpHeaders headers = Utility.createHttpHeaders();
+            ResponseEntity<Product> response = restTemplate.exchange(target, HttpMethod.DELETE, new HttpEntity<Product>(product, headers), Product.class);
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+    }
+
+    public Product getProductById(String id){
+        Product product = new Product();
+        String target = baseUrl + "getbyid/{productId}";
+        RestTemplate restTemplate = new RestTemplate();
+        try {
+            HttpHeaders headers = Utility.createHttpHeaders();
+            HttpEntity<?> httpEntity = new HttpEntity<Object>(headers);
+            ResponseEntity<String> response = restTemplate.exchange(target, HttpMethod.GET, httpEntity, String.class, id);
+            product = mapper.readValue(response.getBody(), new TypeReference<Product>() {});
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
+        return product;
+    }
 }

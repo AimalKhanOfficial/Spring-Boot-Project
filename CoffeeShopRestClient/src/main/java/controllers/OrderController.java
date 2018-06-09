@@ -69,7 +69,7 @@ public class OrderController {
         PersonsDao personsDao = new PersonsDao();
         model.addAttribute("persons", personsDao.getAllPersons());
         model.addAttribute("products", productsDao.getAllProducts());
-        request.removeAttribute("productsOrderline");
+        products.clear();
         return "createOrder";
     }
 

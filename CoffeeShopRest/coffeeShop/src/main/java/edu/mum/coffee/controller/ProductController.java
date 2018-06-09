@@ -1,6 +1,7 @@
 package edu.mum.coffee.controller;
 
 import edu.mum.coffee.Utility.HttpCustomResponse;
+import edu.mum.coffee.domain.Person;
 import edu.mum.coffee.domain.Product;
 import edu.mum.coffee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,5 +62,10 @@ public class ProductController {
             customResponse.setResponseDescription("Something went wrong, try again later.");
         }
         return customResponse;
+    }
+
+    @GetMapping("getbyid/{productId}")
+    public Product getById(@PathVariable int productId) {
+        return productService.findById(productId);
     }
 }
