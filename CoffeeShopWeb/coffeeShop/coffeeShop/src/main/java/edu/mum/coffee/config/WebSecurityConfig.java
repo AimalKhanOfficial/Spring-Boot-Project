@@ -8,9 +8,16 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
+import javax.sql.DataSource;
+
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+	@Autowired
+	DataSource dataSource;
+
+
 	@Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -18,16 +25,30 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().permitAll()
                 .and()
             .formLogin()
-            	.permitAll()
+				.loginPage("/login")
+				.usernameParameter("username").passwordParameter("password")
+				.failureUrl("/loginError")
+				.defaultSuccessUrl("/loginSuccess")
             	.and()
             .logout()
             	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
             	.logoutSuccessUrl("/")
                 .permitAll();
+        http.csrf().disable();
     }
 
 	@Autowired
-	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-		auth.inMemoryAuthentication().withUser("super").password("pw").roles("ADMIN");
+	public void configureGlobal(AuthenticationManagerBuilder auth){
+
+		try {
+			auth.jdbcAuthentication().dataSource(dataSource)
+					.usersByUsernameQuery(
+							"select username,password, enabled from users where username=?")
+					.authoritiesByUsernameQuery(
+							"select username, role from user_roles where username=?");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		//auth.inMemoryAuthentication().withUser("aimalkhan@uu.com").password("123").roles("ADMIN");
 	}
 }
