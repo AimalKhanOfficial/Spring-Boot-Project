@@ -3,6 +3,7 @@ package dao;
 import Utilities.Utility;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import domain.Person;
 import domain.Product;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -31,5 +32,16 @@ public class ProductsDao {
             System.out.println("Exception: " + ex.getMessage());
         }
         return products;
+    }
+
+    public void createProduct(Product product){
+        String target = baseUrl + "create";
+        RestTemplate restTemplate = new RestTemplate();
+        try {
+            HttpHeaders headers = Utility.createHttpHeaders();
+            ResponseEntity<Product> response = restTemplate.exchange(target, HttpMethod.POST, new HttpEntity<Product>(product, headers), Product.class);
+        } catch (Exception ex) {
+            System.out.println("Exception: " + ex.getMessage());
+        }
     }
 }

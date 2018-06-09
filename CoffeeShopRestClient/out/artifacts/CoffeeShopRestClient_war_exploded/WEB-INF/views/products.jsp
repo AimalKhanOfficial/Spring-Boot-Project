@@ -21,7 +21,7 @@
 <div class="row" style="margin-top: 5%">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-        <a href="/create" style="float: right"><img height="80px" width="80px" src="/resources/images/new_4.png"/></a>
+        <a href="/createProduct" style="float: right"><img height="80px" width="80px" src="/resources/images/new_4.png"/></a>
         <table class="table table-hover">
             <thead>
             <tr>
