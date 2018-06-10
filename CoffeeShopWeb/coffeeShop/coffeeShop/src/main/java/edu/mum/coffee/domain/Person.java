@@ -7,10 +7,11 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToOne;
+import java.io.Serializable;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-public class Person {
+public class Person implements Serializable {
 	@Id
 	@GeneratedValue
 	private long id;

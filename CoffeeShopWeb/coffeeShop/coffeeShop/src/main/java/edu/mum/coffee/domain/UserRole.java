@@ -1,10 +1,11 @@
 package edu.mum.coffee.domain;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "UserRoles ")
-public class UserRole {
+public class UserRole implements Serializable {
     @Id
     @GeneratedValue
     public int id;
