@@ -1,6 +1,7 @@
 package edu.mum.coffee.controller;
 
 import edu.mum.coffee.domain.Product;
+import edu.mum.coffee.service.OrderService;
 import edu.mum.coffee.service.PersonService;
 import edu.mum.coffee.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,10 +21,14 @@ public class ProductController {
     @Autowired
     PersonService personService;
 
+    @Autowired
+    OrderService orderService;
+
     @GetMapping(value = {"/*", "/products"})
     public String getAllProducts(Model model) {
         model.addAttribute("products", productService.getAllProduct());
         model.addAttribute("persons", personService.getAllPerson());
+        model.addAttribute("orders", orderService.findAll());
         return "products";
     }
 

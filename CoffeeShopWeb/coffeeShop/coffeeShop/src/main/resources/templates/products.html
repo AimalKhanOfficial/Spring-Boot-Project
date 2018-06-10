@@ -76,6 +76,24 @@
                 </tr>
                 </tbody>
             </table>
+
+            <h2>List of Orders</h2>
+            <table id="example3" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th scope="col">Order Date</th>
+                    <th scope="col">Order Lines</th>
+                    <th scope="col">Order By</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="order : ${orders}">
+                    <td th:text="${order.orderDate}"></td>
+                    <td th:text="${order.orderLines.size()}"></td>
+                    <td th:text="${order.person.lastName}, ${order.person.firstName}"></td>
+                </tr>
+                </tbody>
+            </table>
         </section>
     </div>
     <div class="col-sm-2"></div>
@@ -84,6 +102,7 @@
     $(function () {
         $('#example').DataTable();
         $('#example2').DataTable();
+        $('#example3').DataTable();
     });
 </script>
 </body>
