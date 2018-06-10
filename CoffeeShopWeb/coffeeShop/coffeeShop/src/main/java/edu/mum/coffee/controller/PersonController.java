@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.management.relation.Role;
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -90,9 +91,5 @@ public class PersonController {
         return "userProfile";
     }
 
-    @GetMapping("/placeOrder")
-    public String placeOrder(Model model, HttpServletRequest request) {
-        model.addAttribute("products", productService.getAllProduct());
-        return "placeOrder";
-    }
+
 }

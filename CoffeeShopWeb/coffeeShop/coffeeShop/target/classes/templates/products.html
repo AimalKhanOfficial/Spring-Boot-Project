@@ -14,18 +14,21 @@
 <div class="row" style="margin-top: 5%">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-
+        <div style="float: right" th:if="${session.userLoggedInCheck == null}">
+            <a th:href="@{/displayLogin}">Login</a>
+            <br/>
+        </div>
         <div style="float: right" th:if="${session.userLoggedInCheck != null}">
             <span th:text="'Logged in as: ' + ${session.username} + ' (' + ${session.role} + ')'"></span>
             <a th:href="@{/logout}"> - Logout</a>
+            <br/>
         </div>
-        <br/>
         <div th:if="${session.role == 'USER' and session.userLoggedInCheck != null}">
             <a th:href="@{/placeOrder}" style="float: left">Place Order</a>
-            -
+            <span>&nbsp;- OR -&nbsp;</span>
             <a th:href="@{/userProfile}">Profile</a>
+            <br/>
         </div>
-        <br/>
         <a th:if="${session.role == 'ADMIN' and session.userLoggedInCheck != null}" th:href="@{/createProduct}"
            style="float: right"><img height="80px" width="80px" th:src="@{/images/new_4.png}"/></a>
         <h2>List of Product</h2>
@@ -97,7 +100,7 @@
                 <tr th:each="order : ${orders}">
                     <td th:text="${order.orderDate}"></td>
                     <td th:text="${order.orderLines.size()}"></td>
-                    <td th:text="${order.person.lastName}, ${order.person.firstName}"></td>
+                    <td th:text="${order.person.lastName} + ', ' + ${order.person.firstName}"></td>
                 </tr>
                 </tbody>
             </table>
