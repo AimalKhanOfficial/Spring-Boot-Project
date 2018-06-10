@@ -22,17 +22,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
             .authorizeRequests()
+				.antMatchers("/createProduct", "/editProduct", "/deleteProduct", "/createPerson").hasAnyAuthority("ADMIN")
                 .anyRequest().permitAll()
                 .and()
             .formLogin()
 				.loginPage("/login")
 				.usernameParameter("username").passwordParameter("password")
-				.failureUrl("/loginError")
-				.defaultSuccessUrl("/loginSuccess")
+				.defaultSuccessUrl("/login")
+				.failureUrl("/displayLogin")
             	.and()
             .logout()
             	.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-            	.logoutSuccessUrl("/")
+				.invalidateHttpSession(true)
+            	.logoutSuccessUrl("/products")
                 .permitAll();
         http.csrf().disable();
     }

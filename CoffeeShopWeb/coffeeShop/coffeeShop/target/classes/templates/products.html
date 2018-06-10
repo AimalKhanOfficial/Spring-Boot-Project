@@ -14,7 +14,13 @@
 <div class="row" style="margin-top: 5%">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
-
+        <div style="float: right" th:if="${session.userLoggedInCheck != null}">
+            <span th:text="'Logged in as: ' + ${session.username} + ' (' + ${session.role} + ')'"></span>
+            <a th:href="@{/logout}"> - Logout</a>
+        </div>
+        <br/>
+        <a th:if="${session.role == 'ADMIN' and session.userLoggedInCheck != null}" th:href="@{/createProduct}"
+           style="float: right"><img height="80px" width="80px" th:src="@{/images/new_4.png}"/></a>
         <h2>List of Product</h2>
         <table id="example" class="display" style="width:100%">
             <thead>
@@ -23,6 +29,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">Price</th>
                 <th scope="col">Type</th>
+                <th scope="col" th:if="${session.role == 'ADMIN'}">Actions</th>
             </tr>
             </thead>
             <tbody>
@@ -31,15 +38,52 @@
                 <td th:text="${prod.description}"></td>
                 <td th:text="${prod.price}"></td>
                 <td th:text="${prod.productType}"></td>
+                <td th:if="${session.role == 'ADMIN'}">
+                    <a th:href="@{'/editProduct/' + ${prod.id}}"><img height="23px" width="23px"
+                                                                      th:src="@{/images/Edit-validated-icon.png}"/></a>
+                    <a th:href="@{'/deleteProduct/' + ${prod.id}}"><img height="23px" width="23px"
+                                                                        th:src="@{/images/Delete_Icon.png}"/></a>
+                </td>
             </tr>
             </tbody>
         </table>
+
+        <br/>
+        <section name="persons" th:if="${session.role == 'ADMIN' and session.userLoggedInCheck != null}">
+            <a th:href="@{/createPerson}" style="float: right"><img height="80px" width="80px"
+                                                                    th:src="@{/images/new_4.png}"/></a>
+            <h2>List of Persons</h2>
+            <table id="example2" class="display" style="width:100%">
+                <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Enable</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="person : ${persons}">
+                    <td th:text="${person.firstName}"></td>
+                    <td th:text="${person.lastName}"></td>
+                    <td th:text="${person.email}"></td>
+                    <td th:text="${person.address.city} + ', ' + ${person.address.country}+ ', ' + ${person.address.state}+ ', ' +${person.address.zipcode}">
+                    </td>
+                    <td th:text="${person.phone}"></td>
+                    <td th:text="${person.enable}"></td>
+                </tr>
+                </tbody>
+            </table>
+        </section>
     </div>
     <div class="col-sm-2"></div>
 </div>
 <script type="text/javascript">
     $(function () {
         $('#example').DataTable();
+        $('#example2').DataTable();
     });
 </script>
 </body>

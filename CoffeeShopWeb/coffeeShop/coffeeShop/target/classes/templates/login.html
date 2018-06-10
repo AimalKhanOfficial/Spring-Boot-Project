@@ -8,12 +8,20 @@
     <script th:src="@{/js/bootstrap.min.js}"></script>
 </head>
 <body>
-    <form th:action="@{/login}" method="post">
-        <input class="form-control" type="text" name="username" placeholder="password" th:required="required"/>
-        <br/>
-        <input class="form-control" type="password" name="password" placeholder="password" th:required="required"/>
-        <br/>
-        <input type="submit" class="btn btn-success" style="float: right" value="Submit"/>
-    </form>
+<div class="row" style="margin-top: 5%;">
+    <div class="col-sm-3"></div>
+    <div class="col-sm-6">
+        <h2 style="text-align: center">Login</h2>
+        <form th:action="@{/login}" method="post">
+            <input class="form-control" type="text" name="username" placeholder="username" th:required="required"/>
+            <br/>
+            <input class="form-control" type="password" name="password" placeholder="password" th:required="required"/>
+            <br/>
+            <span style="float: left"><a th:href="@{/signup}">Register</a> </span>
+            <input type="submit" class="btn btn-success" style="float: right" value="Submit"/>
+        </form>
+    </div>
+    <div class="col-sm-3"></div>
+</div>
 </body>
 </html>

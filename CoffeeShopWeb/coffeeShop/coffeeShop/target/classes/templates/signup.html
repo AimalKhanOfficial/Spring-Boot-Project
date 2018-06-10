@@ -12,7 +12,7 @@
     <div class="row" style="margin-top: 2%;">
         <div class="col-sm-3"></div>
         <div class="col-sm-6">
-            <h2>Create Person</h2>
+            <h2 style="text-align: center">Sign Up</h2>
             <br/>
             <input type="hidden" name="enabled"/>
             <input type="hidden" name="person.enable"/>
@@ -32,10 +32,11 @@
             <br/>
             <input class="form-control" type="number" name="person.phone" placeholder="phone" th:required="required"/>
             <br/>
-            <input class="form-control" type="text" name="username" placeholder="password" th:required="required"/>
+            <input class="form-control" type="text" name="username" placeholder="username" th:required="required"/>
             <br/>
             <input class="form-control" type="password" name="password" placeholder="password" th:required="required"/>
             <br/>
+            <span style="float: left"><a th:href="@{/displayLogin}">Already registered? Login here.</a> </span>
             <input type="submit" class="btn btn-success" style="float: right" value="Submit"/>
         </div>
         <div class="col-sm-3"></div>

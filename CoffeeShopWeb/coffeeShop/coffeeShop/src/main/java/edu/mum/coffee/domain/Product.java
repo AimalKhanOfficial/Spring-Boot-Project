@@ -22,9 +22,14 @@ public class Product {
 		super(); // default constructor
 	}
 
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Product(String productName, String description, double price, ProductType productType) {
 		super();
 		this.productName = productName;
+
 		this.description = description;
 		this.price = price;
 		this.productType = productType;
